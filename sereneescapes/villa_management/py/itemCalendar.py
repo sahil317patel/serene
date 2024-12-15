@@ -3,7 +3,8 @@ import json
 
 
 @frappe.whitelist()
-def get_calendar_events(type="Purchase Order"):
+def get_calendar_events(filters):
+    type=json.loads(filters).get("type")
     events = []
     item_list = frappe.get_list("Item", fields=["name"])
     for item_data in item_list:

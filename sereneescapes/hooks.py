@@ -26,7 +26,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/sereneescapes/css/sereneescapes.css"
-# app_include_js = "/assets/sereneescapes/js/sereneescapes.js"
+# app_include_js = "/sereneescapes/js/overrideCalendar.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/sereneescapes/css/sereneescapes.css"

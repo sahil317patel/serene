@@ -59,7 +59,7 @@ class customSalesOrder(SalesOrder):
                             {
                                 "item_code": item_record.get("name"),
                                 "name": item_history.get("ref_so_docname"),
-                                "supplier": item_history.get("customer"),
+                                "customer": item_history.get("customer"),
                                 "from": item_history.get("from"),
                                 "to": item_history.get("to"),
                             }
