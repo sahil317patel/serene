@@ -17,12 +17,14 @@ selectElement.style.outline = "none";
 selectElement.style.boxShadow = "0px 2px 4px rgba(0, 0, 0, 0.1)";
 selectElement.style.cursor = "pointer";
 selectElement.style.marginLeft = "10px";
+
 selectElement.addEventListener("mouseover", () => {
   selectElement.style.borderColor = "#9e9e9e";
 });
 selectElement.addEventListener("mouseout", () => {
   selectElement.style.borderColor = "#d1d8dd";
 });
+
 const customActions = document.getElementsByClassName("page-actions");
 setTimeout(() => {
   if (window.location.pathname === "/app/item/view/calendar/default") {
@@ -31,7 +33,10 @@ setTimeout(() => {
     }
   }
 }, 1000);
-
+let currentTypeFilter = "Sales Order";
+selectElement.addEventListener("change", () => {
+  currentTypeFilter = selectElement.value;
+});
 frappe.views.calendar["Item"] = {
   field_map: {
     start: "start",
@@ -45,12 +50,11 @@ frappe.views.calendar["Item"] = {
   get_events_method:
     "sereneescapes.villa_management.py.itemCalendar.get_calendar_events",
   get_args: function (start, end) {
-    const selectedType = "Sales Order";
     return {
       start: start.format(),
       end: end.format(),
       filters: {
-        type: "Sales Order",
+        type: currentTypeFilter,
       },
     };
   },
