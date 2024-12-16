@@ -4,7 +4,6 @@ selectElement.innerHTML = `
   <option value="Sales Order">Sales Order</option>
   <option value="Purchase Order">Purchase Order</option>
 `;
-
 selectElement.style.padding = "3px 12px";
 selectElement.style.border = "1px solid #d1d8dd";
 selectElement.style.borderRadius = "4px";
