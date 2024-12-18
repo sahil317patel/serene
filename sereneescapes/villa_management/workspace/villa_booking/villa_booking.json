@@ -54,7 +54,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Customer",
+   "label": "Guest Master",
    "link_count": 0,
    "link_to": "Customer",
    "link_type": "DocType",
@@ -64,7 +64,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Sales Order",
+   "label": "Villa Sales Booking",
    "link_count": 0,
    "link_to": "Sales Order",
    "link_type": "DocType",
@@ -74,7 +74,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Sales Invoice",
+   "label": "Villa Sales Bill",
    "link_count": 0,
    "link_to": "Sales Invoice",
    "link_type": "DocType",
@@ -93,7 +93,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Supplier",
+   "label": "Villa Owner",
    "link_count": 0,
    "link_to": "Supplier",
    "link_type": "DocType",
@@ -103,7 +103,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Purchase Order",
+   "label": "Villa Purchase",
    "link_count": 0,
    "link_to": "Purchase Order",
    "link_type": "DocType",
@@ -113,7 +113,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Purchase Invoice",
+   "label": "Villa Purchase Bill",
    "link_count": 0,
    "link_to": "Purchase Invoice",
    "link_type": "DocType",
@@ -121,7 +121,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-12-15 12:15:56.337953",
+ "modified": "2024-12-18 23:08:32.915120",
  "modified_by": "Administrator",
  "module": "villa management",
  "name": "Villa Booking",
