@@ -12,9 +12,9 @@ class customSalesOrder(SalesOrder):
                 "name": self.name,
                 "customer": self.customer,
                 "from": datetime.strptime(
-                    item_data.get("delivery_date"), "%Y-%m-%d"
+                    item_data.get("custom_to"), "%Y-%m-%d"
                 ).date(),
-                "to": datetime.strptime(item_data.get("custom_to"), "%Y-%m-%d").date(),
+                "to": datetime.strptime(item_data.get("delivery_date"), "%Y-%m-%d").date(),
             }
             for item_data in self.items
         ]
@@ -52,7 +52,7 @@ class customSalesOrder(SalesOrder):
             item_record = frappe.get_doc("Item", item.get("name"))
             if item_record.get("custom_item_details"):
                 for item_history in item_record.get("custom_item_details"):
-                    if item_history.get("type") == "Villa Sales Bill":
+                    if item_history.get("type") == "Villa Sales":
                         final_data.append(
                             {
                                 "item_code": item_record.get("name"),
@@ -70,7 +70,7 @@ class customSalesOrder(SalesOrder):
             item_record.append(
                 "custom_item_details",
                 {
-                    "type": "Villa Sales Bill",
+                    "type": "Villa Sales",
                     "customer": new_item.get("customer"),
                     "ref_so_docname": new_item.get("name"),
                     "from": new_item.get("from"),

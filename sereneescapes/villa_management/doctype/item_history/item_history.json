@@ -20,7 +20,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Type",
-   "options": "\nVilla Sales Bill\nVilla Purchase Bill"
+   "options": "\nVilla Sales\nVilla Purchase"
   },
   {
    "fieldname": "ref_po_docname",
@@ -64,7 +64,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-12-19 05:59:49.423827",
+ "modified": "2024-12-19 08:52:19.990389",
  "modified_by": "Administrator",
  "module": "villa management",
  "name": "Item History",

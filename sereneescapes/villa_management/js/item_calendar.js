@@ -3,8 +3,8 @@ const villaSelect = document.createElement("select");
 selectElement.id = "typeFilter";
 villaSelect.id = "villaFilter";
 selectElement.innerHTML = `
-  <option value="Villa Sales Bill">Villa Sales Bill</option>
-  <option value="Villa Purchase Bill">Villa Purchase Bill</option>
+  <option value="Villa Sales Bill">Villa Sales</option>
+  <option value="Villa Purchase Bill">Villa Purchase</option>
 `;
 villaSelect.innerHTML = `
   <option value="All" selected>All</option>
@@ -61,7 +61,7 @@ setTimeout(() => {
   }
 }, 100);
 
-let currentTypeFilter = "Villa Sales Bill";
+let currentTypeFilter = "Villa Sales";
 let currentVillaName = "All";
 selectElement.addEventListener("change", () => {
   currentTypeFilter = selectElement.value;

@@ -15,7 +15,7 @@ def get_calendar_events(filters):
         item = frappe.get_doc("Item", item_data.get("name"))
         if item.get("custom_item_details"):
             for data in item.get("custom_item_details"):
-                if type == "Villa Sales Bill" and data.get("type") == "Villa Sales Bill":
+                if type == "Villa Sales" and data.get("type") == "Villa Sales":
                     events.append(
                         {
                             "start": data.get("from"),
@@ -27,7 +27,7 @@ def get_calendar_events(filters):
                             "progress": 50,
                         }
                     )
-                elif type == "Villa Purchase Bill" and data.get("type") == "Villa Purchase Bill":
+                elif type == "Villa Purchase" and data.get("type") == "Villa Purchase":
                     events.append(
                         {
                             "start": data.get("from"),

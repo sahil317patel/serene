@@ -11,8 +11,8 @@ class customPurchaseOrder(PurchaseOrder):
                 "item_code": item_data.get("item_code"),
                 "name": self.name,
                 "supplier": self.supplier,
-                "from": datetime.strptime(item_data.get("schedule_date"), "%Y-%m-%d").date(),
-                "to": datetime.strptime(item_data.get("custom_from"), "%Y-%m-%d").date(),
+                "from": datetime.strptime(item_data.get("custom_from"), "%Y-%m-%d").date(),
+                "to": datetime.strptime(item_data.get("schedule_date"), "%Y-%m-%d").date(),
             }
             for item_data in self.items
         ]
@@ -54,7 +54,7 @@ class customPurchaseOrder(PurchaseOrder):
             item_record = frappe.get_doc("Item", item.get("name"))
             if item_record.get("custom_item_details"):
                 for item_history in item_record.get("custom_item_details"):
-                    if item_history.get("type") == "Villa Purchase Bill":
+                    if item_history.get("type") == "Villa Purchase":
                         final_data.append(
                             {
                                 "item_code": item_record.get("name"),
@@ -69,7 +69,7 @@ class customPurchaseOrder(PurchaseOrder):
         for new_item in new_items:
             item_record = frappe.get_doc("Item", new_item.get("item_code"))
             item_record.append("custom_item_details", {
-                "type": "Villa Purchase Bill",
+                "type": "Villa Purchase",
                 "supplier": new_item.get("supplier"),
                 "ref_po_docname": new_item.get("name"),
                 "from": new_item.get("from"),
