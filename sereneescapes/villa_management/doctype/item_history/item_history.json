@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-19 05:55:34.321864",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "type",
+  "ref_po_docname",
+  "supplier",
+  "ref_so_docname",
+  "customer",
+  "from",
+  "to"
+ ],
+ "fields": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "\nVilla Sales Bill\nVilla Purchase Bill"
+  },
+  {
+   "fieldname": "ref_po_docname",
+   "fieldtype": "Link",
+   "label": "Ref PO Docname",
+   "options": "Purchase Order"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "ref_so_docname",
+   "fieldtype": "Link",
+   "label": "Ref SO Docname",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "from",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "From"
+  },
+  {
+   "fieldname": "to",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "To"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-19 05:59:49.423827",
+ "modified_by": "Administrator",
+ "module": "villa management",
+ "name": "Item History",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

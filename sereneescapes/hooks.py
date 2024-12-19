@@ -46,7 +46,7 @@ app_license = "mit"
 # doctype_js = {"doctype" : "public/js/doctype.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
-# doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
+doctype_calendar_js = {"Item" : "villa_management/js/item_calendar.js"}
 
 # Svg Icons
 # ------------------
@@ -129,9 +129,10 @@ app_license = "mit"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+    "Purchase Order": "sereneescapes.villa_management.py.purchaseOrder.customPurchaseOrder",
+    "Sales Order": "sereneescapes.villa_management.py.salesOrder.customSalesOrder",
+}
 
 # Document Events
 # ---------------
