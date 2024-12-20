@@ -6,6 +6,7 @@ from erpnext.selling.doctype.sales_order.sales_order import SalesOrder
 class customSalesOrder(SalesOrder):
     def on_submit(self):
         existing_items = self.fetch_items()
+        purchase_order_items = self.fetch_purchase_order_items()
         new_items = [
             {
                 "item_code": item_data.get("item_code"),
@@ -14,7 +15,9 @@ class customSalesOrder(SalesOrder):
                 "from": datetime.strptime(
                     item_data.get("custom_to"), "%Y-%m-%d"
                 ).date(),
-                "to": datetime.strptime(item_data.get("delivery_date"), "%Y-%m-%d").date(),
+                "to": datetime.strptime(
+                    item_data.get("delivery_date"), "%Y-%m-%d"
+                ).date(),
             }
             for item_data in self.items
         ]
@@ -24,9 +27,18 @@ class customSalesOrder(SalesOrder):
                     new_item["item_code"] == existing_item["item_code"]
                     and new_item["customer"] == existing_item["customer"]
                 ):
-                    if new_item["from"] <= existing_item["to"]:
+                    if new_item["from"] < existing_item["to"]:
                         frappe.throw(
                             f"There is already an order from this date for the item <b>{new_item['item_code']}</b> . Please select a new date"
+                        )
+        for new_item in new_items:
+            for po_items in purchase_order_items:
+                if (
+                    new_item["item_code"] == po_items["item_code"]
+                ):
+                    if new_item["to"] > po_items["to"]:
+                        frappe.throw(
+                            f"The {new_item['item_code']}</b> isn`t availble on {new_item["to"]}"
                         )
         self.insert_new_item(new_items)
         super().on_submit()
@@ -58,6 +70,25 @@ class customSalesOrder(SalesOrder):
                                 "item_code": item_record.get("name"),
                                 "name": item_history.get("ref_so_docname"),
                                 "customer": item_history.get("customer"),
+                                "from": item_history.get("from"),
+                                "to": item_history.get("to"),
+                            }
+                        )
+        return final_data
+
+    def fetch_purchase_order_items(self):
+        final_data = []
+        item_data = frappe.get_list("Item", fields=["name"])
+        for item in item_data:
+            item_record = frappe.get_doc("Item", item.get("name"))
+            if item_record.get("custom_item_details"):
+                for item_history in item_record.get("custom_item_details"):
+                    if item_history.get("type") == "Villa Purchase":
+                        final_data.append(
+                            {
+                                "item_code": item_record.get("name"),
+                                "name": item_history.get("ref_po_docname"),
+                                "supplier": item_history.get("supplier"),
                                 "from": item_history.get("from"),
                                 "to": item_history.get("to"),
                             }

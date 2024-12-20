@@ -22,12 +22,11 @@ class customPurchaseOrder(PurchaseOrder):
                     new_item["item_code"] == existing_item["item_code"]
                     and new_item["supplier"] == existing_item["supplier"]
                 ):
-                    if new_item["from"] <= existing_item["to"]:
+                    if new_item["from"] < existing_item["to"]:
                         frappe.throw(
                             (
                                 f"The item '{new_item['item_code']}' has already been purchased, "
                                 f"and the contract expires on {existing_item['to']}. "
-                                f"Please choose a 'from' date later than {existing_item['to']}."
                             )
                         )
         self.insert_new_item(new_items)
