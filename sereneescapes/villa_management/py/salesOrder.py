@@ -38,7 +38,7 @@ class customSalesOrder(SalesOrder):
                 ):
                     if new_item["to"] > po_items["to"]:
                         frappe.throw(
-                            f"The {new_item['item_code']}</b> isn`t availble on {new_item['to']}"
+                            f"The {new_item['item_code']}</b> isn`t availble on {datetime.strftime(new_item['to'], '%d-%m-%Y')}"
                         )
         self.insert_new_item(new_items)
         super().on_submit()

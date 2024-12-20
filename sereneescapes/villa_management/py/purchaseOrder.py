@@ -26,7 +26,7 @@ class customPurchaseOrder(PurchaseOrder):
                         frappe.throw(
                             (
                                 f"The item '{new_item['item_code']}' has already been purchased, "
-                                f"and the contract expires on {existing_item['to']}. "
+                                f"and the contract expires on {datetime.strftime(existing_item['to'], '%d-%m-%Y')}. "
                             )
                         )
         self.insert_new_item(new_items)

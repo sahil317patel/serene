@@ -10,7 +10,7 @@ def get_calendar_events(filters):
     if villaName == "All":
        item_list = frappe.get_list("Item", fields=["name"])
     else:
-       item_list = frappe.get_list("Item", filters={"item_code": villaName, "disabled" : 0}, fields=["name"])
+       item_list = frappe.get_list("Item", filters={"item_name": villaName, "disabled" : 0}, fields=["name"])
     for item_data in item_list:
         item = frappe.get_doc("Item", item_data.get("name"))
         if item.get("custom_item_details"):
@@ -43,4 +43,4 @@ def get_calendar_events(filters):
 
 @frappe.whitelist()
 def getItems():
-       return frappe.get_list("Item", filters={"disabled" : 0}, fields=["item_code"])
+       return frappe.get_list("Item", filters={"disabled" : 0}, fields=["item_name"])

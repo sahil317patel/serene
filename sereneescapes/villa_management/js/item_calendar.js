@@ -138,7 +138,7 @@ frappe.call({
     villaOptions.length = 0;
     villaOptions.push({ value: "All", label: "All" });  
     items.forEach((item) => {
-      const option = { value: item.item_code, label: item.item_code };
+      const option = { value: item.item_name, label: item.item_name };
       villaOptions.push(option);
     });
     updateDropdown(villaFilterDropdown, villaOptions);
