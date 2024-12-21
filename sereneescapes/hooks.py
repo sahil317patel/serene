@@ -43,10 +43,13 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-doctype_js = {"Purchase Order" : "public/js/purchaseOrder.js", "Sales Order" : "public/js/salesOrder.js"}
+doctype_js = {
+    "Purchase Order": "public/js/purchaseOrder.js",
+    "Sales Order": "public/js/salesOrder.js",
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
-doctype_calendar_js = {"Item" : "villa_management/js/item_calendar.js"}
+doctype_calendar_js = {"Item": "villa_management/js/item_calendar.js"}
 
 # Svg Icons
 # ------------------
@@ -244,16 +247,15 @@ override_doctype_class = {
 # }
 
 fixtures = [
-
-      { "dt": "Role",
-         "filters": [
-             [
-                 "name",
-                 "in",
-                 [
-                     "Villa Manager"
-                 ],
-             ]
-         ],
-      }
+    {
+        "dt": "Role",
+        "filters": [
+            [
+                "name",
+                "in",
+                ["Villa Manager"],
+            ]
+        ],
+    },
+    {"dt": "Property Setter", "filters": [["module", "in", ["villa management"]]]},
 ]
