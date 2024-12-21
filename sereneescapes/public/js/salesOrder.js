@@ -10,4 +10,17 @@ frappe.ui.form.on("Sales Order Item", {
       });
     }
   },
+  delivery_date: function (frm, cdt, cdn) {
+    let child = frappe.get_doc(cdt, cdn);
+    frappe.call({
+      method: "sereneescapes.villa_management.py.purchaseOrder.getDays",
+      args: {
+        fromDate: child.custom_to,
+        toDate: child.delivery_date,
+      },
+      callback: (r) => {
+        frappe.model.set_value(cdt, cdn, "qty", r.message);
+      },
+    });
+  },
 });

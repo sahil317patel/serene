@@ -76,3 +76,9 @@ class customPurchaseOrder(PurchaseOrder):
             })
             item_record.save() 
         frappe.db.commit()  
+        
+@frappe.whitelist()
+def getDays(fromDate, toDate):
+    fromDate = datetime.strptime(fromDate, "%Y-%m-%d")
+    toDate = datetime.strptime(toDate, "%Y-%m-%d")
+    return (toDate - fromDate).days
